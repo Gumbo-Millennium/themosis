@@ -22,7 +22,7 @@ services:
             APP_MODE: 'test'
         volumes:
             - .:/usr/share/nginx/html
-            - ./lib/nginx.conf:/etc/nginx/conf.d/default.conf
+            - ./config/docker/nginx.conf:/etc/nginx/conf.d/default.conf
 
     # PHP 7.1 FPM
     php:
