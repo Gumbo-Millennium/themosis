@@ -1,0 +1,30 @@
+# Stylelint Config
+#
+# @author Roelof Roos
+
+extends: "stylelint-config-standard"
+
+plugins:
+  "stylelint-scss"
+
+rules:
+  value-no-vendor-prefix: true
+  function-url-scheme-whitelist: ["data", "https"]
+  function-url-no-scheme-relative: true
+  color-hex-length: "long"
+  at-rule-no-unknown:
+    - true
+    - ignoreAtRules: &sass-rules
+      - include
+      - extend
+      - mixin
+      - function
+      - if
+      - else
+      - error
+      - return
+      - content
+  at-rule-empty-line-before:
+    - "always"
+    - ignoreAtRules: *sass-rules
+  number-leading-zero: "never"

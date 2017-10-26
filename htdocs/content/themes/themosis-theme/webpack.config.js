@@ -1,40 +1,71 @@
-var webpack = require('webpack'),
-    path = require('path');
+/**
+ * Encore configuration, handles creating all static assets
+ *
+ * @author Roelof Roos
+ */
 
-module.exports = {
-    cache: true,
-    target: 'web',
-    entry: {
-        theme: path.join(__dirname, 'assets/js/theme.js')
-    },
-    output: {
-        path: path.join(__dirname, 'dist/js'),
-        publicPath: '',
-        filename: '[name].min.js'
-    },
-    module: {
-        loaders: [
-            {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                loader: 'babel-loader'
-            }
-        ]
-    },
-    externals: {
-        jquery: 'jQuery',
-        backbone: 'Backbone',
-        underscore: '_'
-    },
+// webpack.config.js
+const Encore = require('@symfony/webpack-encore')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const ImageminPlugin = require('imagemin-webpack-plugin').default
+const ImageminMozjpeg = require('imagemin-mozjpeg')
+const StyleLintPlugin = require('stylelint-webpack-plugin')
+
+Encore
+  // directory where all compiled assets will be stored
+  .setOutputPath('dist/')
+
+  // what's the public path to this directory (relative to your project's document root dir)
+  .setPublicPath('/dist')
+
+  // empty the outputPath dir before each build
+  .cleanupOutputBeforeBuild()
+
+  // will output as web/build/app.js
+  .addEntry('js/gumbo-millenium', './assets/js/theme.js')
+
+  // will output as web/build/main.css
+  .addStyleEntry('css/gumbo-millenium', './assets/sass/theme.scss')
+
+  // allow sass/scss files to be processed
+  .enableSassLoader()
+
+  // Enable source maps on production
+  .enableSourceMaps(!Encore.isProduction())
+
+  // Enable PostCSS processing
+  .enablePostCssLoader()
+
+  // Add ESLint
+  .addLoader({
+    enforce: 'pre',
+    test: /\.jsx?$/,
+    exclude: /(node_modules|var\/data)/,
+    loader: 'eslint-loader'
+  })
+
+  // Add StyleLint
+  .addPlugin(new StyleLintPlugin({
+    files: ['assets/sass/**/*.s?(a|c)ss']
+  }))
+
+  // Copy images to destination
+  .addPlugin(new CopyWebpackPlugin([{
+    from: 'assets/images',
+    to: 'images'
+  }]))
+
+  // Apply imagemin, using mozjpeg for JPEG minification
+  .addPlugin(new ImageminPlugin({
+    disable: !Encore.isProduction(),
+    test: /\.(jpe?g|png|gif|svg)$/i,
     plugins: [
-        new webpack.ProvidePlugin({
-            // Automatically detect jQuery and $ as free var in modules
-            // and inject the jquery library
-            // This is required by many jquery plugins
-            jquery: "jQuery",
-            $: "jQuery",
-            backbone: "Backbone",
-            underscore: "_"
-        })
+      ImageminMozjpeg({
+        quality: 90,
+        progressive: true
+      })
     ]
-};
+  }))
+
+// export the final configuration
+module.exports = Encore.getWebpackConfig()
