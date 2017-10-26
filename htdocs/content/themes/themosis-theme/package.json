@@ -29,5 +29,15 @@
     "gulp-util": "^3.0.7",
     "postcss-flexibility": "^1.1.0",
     "webpack": "^1.13.2"
-  }
+  },
+  "browserlist": [
+    "Android 2.3",
+    "Android >= 4",
+    "Chrome >= 20",
+    "Firefox >= 24",
+    "Explorer >= 8",
+    "iOS >= 6",
+    "Opera >= 12",
+    "Safari >= 6"
+  ]
 }
