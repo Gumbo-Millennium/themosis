@@ -5,6 +5,8 @@
  * @author Sven Boekelder
  * @author Stefan Petter
  * @author Thomas Hop
+ * @author Arjen Stens
+ *
  * @license GPL-2.0
  * @source https://github.com/Gumbo-Millennium/themosis/tree/develop/theme
  */
