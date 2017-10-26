@@ -10,7 +10,6 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     sass = require('gulp-sass'),
     sourcemaps = require('gulp-sourcemaps'),
-    stylus = require('gulp-stylus'),
     uglify = require('gulp-uglify'),
     webpack = require('webpack'),
     webpackConfig = require('./webpack.config.js'),
@@ -58,61 +57,6 @@ var errorReport = function(err)
 /*-------*/
 /* Tasks */
 /*-------*/
-// Stylus
-gulp.task('stylus:dev', function()
-{
-    return gulp.src(dirs.src + '/stylus/*.styl')
-        .pipe(plumber({
-            errorHandler: errorReport
-        }))
-        .pipe(sourcemaps.init())
-        .pipe(stylus())
-        .pipe(postcss([autoprefixer({
-            browsers: [
-                "Android 2.3",
-                "Android >= 4",
-                "Chrome >= 20",
-                "Firefox >= 24",
-                "Explorer >= 8",
-                "iOS >= 6",
-                "Opera >= 12",
-                "Safari >= 6"
-            ]
-        }), flexibility()]))
-        .pipe(cleancss())
-        .pipe(rename({
-            suffix: '.min'
-        }))
-        .pipe(sourcemaps.write('./maps'))
-        .pipe(gulp.dest(dirs.dest + '/css'))
-        .pipe(bs.stream());
-});
-
-gulp.task('stylus', function()
-{
-    return gulp.src(dirs.src + '/stylus/*.styl')
-        .pipe(stylus({
-            compress: true
-        }))
-        .pipe(postcss([autoprefixer({
-            browsers: [
-                "Android 2.3",
-                "Android >= 4",
-                "Chrome >= 20",
-                "Firefox >= 24",
-                "Explorer >= 8",
-                "iOS >= 6",
-                "Opera >= 12",
-                "Safari >= 6"
-            ]
-        }), flexibility()]))
-        .pipe(cleancss())
-        .pipe(rename({
-            suffix: '.min'
-        }))
-        .pipe(gulp.dest(dirs.dest + '/css'));
-});
-
 // Sass
 // Compatibility with Bootstrap 3.3.7 Sass
 gulp.task('sass:dev', function () {
@@ -238,7 +182,6 @@ gulp.task('watch', function()
         https: false
     });
 
-    gulp.watch(dirs.src + '/stylus/**/*.styl', gulp.series('stylus:dev'));
     gulp.watch(dirs.src + '/sass/**/*.scss', gulp.series('sass:dev'));
     gulp.watch(dirs.src + '/js/**/*.js', gulp.series('webpack:dev')).on('change', bs.reload);
 });
