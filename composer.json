@@ -20,8 +20,12 @@
   "autoload": {
     "psr-0": {
       "Thms": "library"
-    }
+    },
+    "classmap": [
+      "htdocs/content/plugins/wp-bootstrap-navwalker/wp-bootstrap-navwalker.php"
+    ]
   },
+
   "config": {
     "preferred-install": "dist"
   },
@@ -33,7 +37,8 @@
     "themosis/theme": "^1.3.0",
     "vlucas/phpdotenv": "^2.2",
     "filp/whoops": "^2.1",
-    "illuminate/database": "^5.3"
+    "illuminate/database": "^5.3",
+    "wp-bootstrap/wp-bootstrap-navwalker": "^2.0"
   },
   "require-dev": {
     "phpunit/phpunit": "5.3.*"
