@@ -5,5 +5,6 @@
 /*----------------------------------------------------*/
 return [
     'local' => 'sven-PNB-series',
-    'production' => 'INSERT-HOSTNAME'
+    'production' => 'INSERT-HOSTNAME',
+    'docker' => 'php.gumbo.example'
 ];
