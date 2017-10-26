@@ -23,3 +23,7 @@ cs_fixer*
 .env.*
 !.env.local
 !.env.docker
+
+config/environment\.php
+
+\.env\.local
