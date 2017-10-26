@@ -41,20 +41,21 @@
       <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
           {{-- loop sliderItems to add indicators to slider --}}
-          @foreach ($sliderItems as $sliderItem )
+          @foreach ($eventSlides as $eventslide )
             <li data-target="#myCarousel" data-slide-to="{{ $loop->index }}" @if ($loop->first) class="active" @endif></li>
           @endforeach
         </ol>
         <div class="carousel-inner">
-          @foreach ($sliderItems as $sliderItem )
+          {{-- create carousel-item for every slide --}}
+          @foreach ($eventSlides as $eventSlide )
             <div class="carousel-item @if ($loop->first) active @endif">
-              <img class="second-slide" src="{{ $sliderItem['featuredImage'] }}" alt="Slide">
+              <img class="second-slide" src="{{ $eventSlide['featuredImage'] }}" alt="Slide">
               <div class="container">
-                <div class="carousel-caption text-{{ $sliderItem['alignment'] }}">
-                  <h1>{{ $sliderItem['caption'] }}</h1>
-                  <p>{{ $sliderItem['subCaption'] }}</p>
-                  @if($sliderItem['showButton'] == true)
-                    <p><a class="btn btn-lg btn-primary" href="{{ $sliderItem['buttonUrl'] }}" role="button">{{ $sliderItem['buttonText'] }}</a></p>
+                <div class="carousel-caption text-{{ $eventSlide['alignment'] }}">
+                  <h1>{{ $eventSlide['caption'] }}</h1>
+                  <p>{{ $eventSlide['subCaption'] }}</p>
+                  @if($eventSlide['showButton'] == true)
+                    <p><a class="btn btn-lg btn-primary" href="{{ $eventSlide['buttonUrl'] }}" role="button">{{ $eventSlide['buttonText'] }}</a></p>
                   @endif
                 </div>
               </div>

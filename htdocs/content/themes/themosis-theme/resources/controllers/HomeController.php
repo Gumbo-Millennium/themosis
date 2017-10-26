@@ -17,7 +17,7 @@ class HomeController extends BaseController
 
         /* get slides of upcoming events and pass them to view */
         $eventSlides = $this->createEventsSlides();
-        $data = array_add($data, 'sliderItems', $eventSlides);
+        $data = array_add($data, 'eventSlides', $eventSlides);
 
         /* TODO unused variable now, required in template, possibly remove this */
         $post = new Post();
@@ -58,7 +58,7 @@ class HomeController extends BaseController
             $eventSlide = array_add($eventSlide, 'alignment', 'right');
 
             /* add this sliderItem to list of slider items */
-            $eventSlides = array_add($eventSlides, 'slide' . $key, $eventSlide);
+            $eventSlides = array_add($eventSlides, 'eventSlide' . $key, $eventSlide);
         }
 
         return $eventSlides;
