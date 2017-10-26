@@ -9,15 +9,14 @@
  *
  */
 
-// JQuery
-Asset::add('jquery','https://code.jquery.com/jquery-3.2.1.slim.min.js');
-
-// PopperJS
-Asset::add('popperjs','https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js');
-
-// Bootstrap
+// CSS
 Asset::add('bootstrapcss','https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css');
-Asset::add('bootstrapjs','https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js');
+Asset::add('carouselbootstrap','css/carousel.css');
+
+// JS
+Asset::add('jquerybootstrap','https://code.jquery.com/jquery-3.2.1.slim.min.js', [], false, true);
+Asset::add('popperjs','https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js', ['jquerybootstrap'], false, true);
+Asset::add('bootstrapjs','https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js', ['jquerybootstrap', 'popperjs'], false, true);
 
 Route::any('front', function($post, $query)
 {
