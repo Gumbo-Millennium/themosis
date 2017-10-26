@@ -12,6 +12,7 @@
 // CSS
 Asset::add('bootstrapcss','https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css');
 Asset::add('carouselbootstrap','css/carousel.css');
+Asset::add('customcss','css/custom.css');
 
 // JS
 Asset::add('jquerybootstrap','https://code.jquery.com/jquery-3.2.1.slim.min.js', [], false, true);
