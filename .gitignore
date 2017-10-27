@@ -22,5 +22,3 @@ cs_fixer*
 .env.*
 !.env.example
 !.env.docker
-
-config/environment\.php
