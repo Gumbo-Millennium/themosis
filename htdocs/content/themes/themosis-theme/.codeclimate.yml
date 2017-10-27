@@ -1,0 +1,26 @@
+engines:
+  stylelint:
+    enabled: true
+  eslint:
+    enabled: true
+  duplication:
+    enabled: true
+    config:
+      languages:
+        - javascript
+        - php
+  fixme:
+    enabled: true
+  phpcodesniffer:
+    enabled: true
+ratings:
+  paths:
+    - "assets/scss/**.scss"
+    - "assets/js/**.js"
+    - "assets/js/**.jsx"
+    - "**.php"
+exclude_paths:
+  - dist/
+  - node_modules/
+  - vendor/
+  - assets/components/
