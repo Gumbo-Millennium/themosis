@@ -18,6 +18,7 @@ body {
 .carousel-caption {
   bottom: 3rem;
   z-index: 10;
+  text-shadow: 2px 2px black;
 }
 
 // Declare heights because of positioning of img element
@@ -32,6 +33,11 @@ body {
   left: 0;
   min-width: 100%;
   height: 32rem;
+  object-fit: cover;
+}
+
+.carousel-item .btn {
+  box-shadow: 2px 2px black;
 }
 
 /// MARKETING CONTENT ///
