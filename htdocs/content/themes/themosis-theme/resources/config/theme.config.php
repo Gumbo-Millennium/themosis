@@ -11,12 +11,12 @@ return [
     /* --------------------------------------------------------------- */
     // Theme textdomain
     /* --------------------------------------------------------------- */
-    'textdomain' => 'themosis',
+    'textdomain' => 'gumbo',
 
     /* --------------------------------------------------------------- */
     // Global Javascript namespace of your theme
     /* --------------------------------------------------------------- */
-    'namespace' => 'themosis',
+    'namespace' => 'gumboMillennium',
 
     /* --------------------------------------------------------------- */
     // Set WordPress admin ajax file without the PHP extension
@@ -30,7 +30,7 @@ return [
 
     /* --------------------------------------------------------------- */
     // Restrict access to the WordPress Admin for users with a
-    // specific role. 
+    // specific role.
     // Once the theme is activated, you can only log in by going
     // to 'wp-login.php' or 'login' (if permalinks changed) urls.
     // By default, allows 'administrator', 'editor', 'author',

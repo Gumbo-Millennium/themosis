@@ -2,51 +2,57 @@ version: "2.2"
 
 # Create a network
 networks:
-    gumbo-site:
-        driver: bridge
+  gumbo-site:
+    driver: bridge
 
 # Create a vitual volume for the SQL storage
 volumes:
-    mysql-data:
+  mysql-data:
+  cache-storage:
 
 services:
-    # Webserver, nginx
-    web:
-        image: nginx:latest
-        hostname: gumbo.example
-        networks:
-            - gumbo-site
-        ports:
-            - "8337:80"
-        environment:
-            APP_MODE: 'test'
-        volumes:
-            - .:/usr/share/nginx/html
-            - ./config/docker/nginx.conf:/etc/nginx/conf.d/default.conf
+  # Webserver, nginx
+  web:
+    image: nginx:latest
+    hostname: gumbo.example
+    networks:
+      - gumbo-site
+    ports:
+      - "8337:80"
+    environment:
+      APP_MODE: 'test'
+    volumes:
+      - .:/var/www/html:ro
+      - ./config/docker/nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+    - php
+    - mysql
 
-    # PHP 7.1 FPM
-    php:
-        image: roelofr/php-fpm:latest
-        hostname: php.gumbo.example
-        networks:
-            - gumbo-site
-        environment:
-            APP_MODE: 'test'
-        volumes:
-            - .:/usr/share/nginx/html
+  # PHP 7.1 FPM
+  php:
+    image: roelofr/php-fpm:latest
+    hostname: php.gumbo.example
+    networks:
+      - gumbo-site
+    environment:
+      APP_MODE: 'test'
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - mysql
 
-    # MariaDb, cause f*ck Oracle
-    mysql:
-        image: mariadb
-        hostname: mysql.gumbo.example
-        networks:
-            - gumbo-site
-        volumes:
-            - mysql-data:/var/lib/mysql
-        environment:
-            # MySQL isn't publicly visible, there's no real need to be very
-            # secure about these passwords
-            MYSQL_ROOT_PASSWORD: phuG8Aep2vahquii8raigh7iec3aephoo6gaqu2ool1jeisi
-            MYSQL_USER: gumbo_usr
-            MYSQL_PASSWORD: queedahraes7aifaeshadohs9aiGh1Uh
-            MYSQL_DATABASE: gumbo_db
+  # MariaDb, cause f*ck Oracle
+  mysql:
+    image: mariadb
+    hostname: mysql.gumbo.example
+    networks:
+      - gumbo-site
+    volumes:
+      - mysql-data:/var/lib/mysql
+    environment:
+      # MySQL isn't publicly visible, there's no real need to be very
+      # secure about these passwords
+      MYSQL_ROOT_PASSWORD: phuG8Aep2vahquii8raigh7iec3aephoo6gaqu2ool1jeisi
+      MYSQL_USER: gumbo_usr
+      MYSQL_PASSWORD: queedahraes7aifaeshadohs9aiGh1Uh
+      MYSQL_DATABASE: gumbo_db

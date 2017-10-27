@@ -21,11 +21,18 @@ Encore
   // empty the outputPath dir before each build
   .cleanupOutputBeforeBuild()
 
-  // will output as web/build/app.js
-  .addEntry('js/gumbo-millenium', './assets/js/theme.js')
+  // contains theme javascript and css
+  .addEntry('js/gumbo-millennium', './assets/js/theme.js')
+  .addStyleEntry('css/gumbo-millennium', './assets/sass/theme.scss')
 
-  // will output as web/build/main.css
-  .addStyleEntry('css/gumbo-millenium', './assets/sass/theme.scss')
+  // contains shared information
+  .createSharedEntry('js/vendor', ['jquery', 'popper.js', 'bootstrap'])
+
+  // Provide jQuery and Popper as global variable
+  .autoProvideVariables({
+    $: 'jquery',
+    Popper: 'popper.js'
+  })
 
   // allow sass/scss files to be processed
   .enableSassLoader()

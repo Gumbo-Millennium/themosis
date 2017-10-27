@@ -1,15 +1,24 @@
 <?php
 /*
- * Themosis Theme.
+ * Gumbo Millennium theme
  *
- * @author  Julien Lambé <julien@themosis.com>
- * @link 	http://www.themosis.com/
+ * @author Sven Boekelder
+ * @author Thomas Hop
+ * @author Stefan Petter
+ * @author Roelof Roos
+ * @author Arjen Stens
+ * @author Julien Lambé <julien@themosis.com>
+ *
+ * @license GPL-2.0
+ * @link   https://gumbo-millennium.nl/
+ * @source https://github.com/gumbo-millennium/themosis
  */
 
-/*----------------------------------------------------*/
-// The directory separator.
-/*----------------------------------------------------*/
-defined('DS') ? DS : define('DS', DIRECTORY_SEPARATOR);
+// The directory separator, this is only usefull for Windows, but if
+// everyone's using docker, we can get rid of this.
+if (!defined('DS')) {
+    define('DS', DIRECTORY_SEPARATOR);
+}
 
 if (!function_exists('themosis_theme_assets')) {
     /**
@@ -118,7 +127,9 @@ $constants->make();
 /*
  * Register theme textdomain.
  */
-defined('THEME_TEXTDOMAIN') ? THEME_TEXTDOMAIN : define('THEME_TEXTDOMAIN', $theme['config.factory']->get('theme.textdomain'));
+if (!defined('THEME_TEXTDOMAIN')) {
+    define('THEME_TEXTDOMAIN', $theme['config.factory']->get('theme.textdomain'));
+}
 
 $theme['action']->add('after_setup_theme', function () {
     load_theme_textdomain(THEME_TEXTDOMAIN, get_template_directory().'/languages');

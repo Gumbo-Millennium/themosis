@@ -1,0 +1,22 @@
+/**
+ * Banner for the sponsors
+ *
+ * @author Sven Boekelder
+ */
+
+.support-banner {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: $spacer * 2 0;
+
+  &__inner {
+    width: $support-banner-width;
+    height: $support-banner-height;
+    padding: 0;
+    overflow: hidden;
+
+    // Add a soft grey background
+    background-color: map-get($grays, '200');
+  }
+}

@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="theme-color" content="#006b00">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#006b00">
 
-	@wp_head
+    @wp_head
 </head>
 <body>
 <div id="app">
-	
-	<header>
+
+    <header>
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <a class="navbar-brand" href="#">Carousel</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -169,16 +169,16 @@
 
     </main>
 
-	<div class="wrapper">
-		<div class="container">
-			<div class="content">
-				<div class="post">
-					{!! apply_filters('the_content', $post->post_content) !!}
-				</div>
-			</div>
-			@include('banner')
-		</div>
-	</div>
+    <div class="wrapper">
+        <div class="container">
+            <div class="content">
+                <div class="post">
+                    {!! apply_filters('the_content', $post->post_content) !!}
+                </div>
+            </div>
+            @include('banner')
+        </div>
+    </div>
 
 </div>
 @wp_footer

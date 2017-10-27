@@ -1,13 +1,20 @@
 language: php
 
 php:
-  - '5.6'
   - '7.0'
-  - hhvm
+  - '7.1'
   - nightly
 
-before_script:
-  - composer self-update
-  - composer install
+cache:
+  directories:
+    - /home/travis/.composer
+    - vendor/
+    - htdocs/content/themes/themosis-theme/vendor
+    - node_modules/
+    - htdocs/content/themes/themosis-theme/node_modules
 
-script: vendor/bin/phpunit
+before_script:
+  - bin/ci-install
+
+script:
+  - bin/ci-test

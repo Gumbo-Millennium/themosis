@@ -1,15 +1,30 @@
 /**
  * Wordpress theme for Gumbo Millennium
  *
- * @author Roelof Roos
  * @author Sven Boekelder
- * @author Stefan Petter
  * @author Thomas Hop
+ * @author Stefan Petter
+ * @author Roelof Roos
  * @author Arjen Stens
  *
  * @license GPL-2.0
- * @source https://github.com/Gumbo-Millennium/themosis/tree/develop/theme
+ * @source https://github.com/gumbo-millennium/themosis/tree/develop/theme
  */
 
+// Load variables
 @import 'variables';
+
+// Load mixins
+@import 'mixins/all';
+
+// Load Bootstrap
+@import 'bootstrap';
+
+// Load elements (small bits)
+@import 'elements/all';
+
+// Load components (bigger elements)
+@import 'components/all';
+
+// Load tweaks (various tweaks)
 @import 'tweaks/all';
