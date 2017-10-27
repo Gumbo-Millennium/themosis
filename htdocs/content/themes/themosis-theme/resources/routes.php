@@ -13,7 +13,8 @@
 Asset::add('gumbo-theme-stylesheet', 'css/gumbo-millennium.css');
 
 // JS
-Asset::add('gumbo-millennium-vendor', 'js/vendor.js');
+Asset::add('gumbo-millennium-webpack', 'manifest.js', []);
+Asset::add('gumbo-millennium-vendor', 'js/vendor.js', ['gumbo-millennium-webpack']);
 Asset::add('gumbo-millennium-js', 'js/gumbo-millennium.js', ['gumbo-millennium-vendor']);
 
 Route::any('front', function ($post, $query) {

@@ -16,6 +16,7 @@ return [
      *                              available to media custom field. If string,
      *                              used as display name ;)
      */
-    'gumbo-millennium' => [200, 150, true, true],
+    'gumbo-photo' => [200, 150, true, 'Gumbo foto'],
+    'gumbo-banner' => [950, 250, true, 'Gumbo sponsor banner'],
 
 ];

@@ -28,6 +28,12 @@ Encore
   // contains shared information
   .createSharedEntry('js/vendor', ['jquery', 'popper.js', 'bootstrap'])
 
+  // Provide jQuery and Popper as global variable
+  .autoProvideVariables({
+    $: 'jquery',
+    Popper: 'popper.js'
+  })
+
   // allow sass/scss files to be processed
   .enableSassLoader()
 

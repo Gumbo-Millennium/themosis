@@ -11,12 +11,12 @@ return [
     /* --------------------------------------------------------------- */
     // Theme textdomain
     /* --------------------------------------------------------------- */
-    'textdomain' => 'gumbo-millennium',
+    'textdomain' => 'gumbo',
 
     /* --------------------------------------------------------------- */
     // Global Javascript namespace of your theme
     /* --------------------------------------------------------------- */
-    'namespace' => 'gumbo-millennium',
+    'namespace' => 'gumboMillennium',
 
     /* --------------------------------------------------------------- */
     // Set WordPress admin ajax file without the PHP extension
