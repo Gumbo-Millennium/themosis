@@ -16,6 +16,6 @@ return [
      *                              available to media custom field. If string,
      *                              used as display name ;)
      */
-    'themosis' => [200, 150, true, true],
+    'gumbo-millennium' => [200, 150, true, true],
 
 ];

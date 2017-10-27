@@ -1,9 +1,17 @@
 <?php
 /*
- * Themosis Theme.
+ * Gumbo Millennium theme
  *
- * @author  Julien Lambé <julien@themosis.com>
- * @link    http://www.themosis.com/
+ * @author Sven Boekelder
+ * @author Thomas Hop
+ * @author Stefan Petter
+ * @author Roelof Roos
+ * @author Arjen Stens
+ * @author Julien Lambé <julien@themosis.com>
+ *
+ * @license GPL-2.0
+ * @link   https://gumbo-millennium.nl/
+ * @source https://github.com/gumbo-millennium/themosis
  */
 
 // The directory separator, this is only usefull for Windows, but if
