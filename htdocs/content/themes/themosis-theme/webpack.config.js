@@ -22,10 +22,10 @@ Encore
   .cleanupOutputBeforeBuild()
 
   // will output as web/build/app.js
-  .addEntry('js/gumbo-millenium', './assets/js/theme.js')
+  .addEntry('js/gumbo-millennium', './assets/js/theme.js')
 
   // will output as web/build/main.css
-  .addStyleEntry('css/gumbo-millenium', './assets/sass/theme.scss')
+  .addStyleEntry('css/gumbo-millennium', './assets/sass/theme.scss')
 
   // allow sass/scss files to be processed
   .enableSassLoader()
