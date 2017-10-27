@@ -23,5 +23,10 @@
     "illuminate/view": "^5.4",
     "illuminate/filesystem": "^5.4",
     "illuminate/database": "^5.4"
+  },
+  "config": {
+    "platform": {
+      "php": "7.0"
+    }
   }
 }

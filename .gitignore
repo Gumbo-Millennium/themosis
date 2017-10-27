@@ -3,7 +3,6 @@
 Thumbs.db
 
 ### Composer
-composer.lock
 vendor/
 
 ### IDE
@@ -21,9 +20,7 @@ cs_fixer*
 ### Environment Credentials
 .env
 .env.*
-!.env.local
+!.env.example
 !.env.docker
 
 config/environment\.php
-
-\.env\.local
