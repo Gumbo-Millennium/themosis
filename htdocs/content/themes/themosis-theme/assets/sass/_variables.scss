@@ -3,7 +3,7 @@
 //
 
 /// COLOURS ///
-
+$colour-gumbo: #006b00;
 
 /// DIMENSIONS ///
 
@@ -12,3 +12,25 @@
 
 
 /// EASING ///
+
+
+/// BOOTSTRAP OVERRIDE ///
+$colour-blue: #0082ff; // Similar to Bootstrap
+
+// Add Gumbo to colour list
+$colors: (
+  "gumbo": $colour-gumbo
+);
+
+// Change primary colour to Gumbo green, add Bootstrap blue as notice (more
+// important than info).
+$theme-colors: (
+  "primary": $colour-gumbo,
+  "notice": $colour-blue
+);
+
+// Links should remain blue.
+$link-color: $colour-blue;
+
+// Use the vendor green for active elements, instead of Bootstrap blue
+$component-active-bg: $colour-gumbo;

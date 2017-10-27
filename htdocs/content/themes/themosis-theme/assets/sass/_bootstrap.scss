@@ -1,0 +1,81 @@
+//
+// Include Bootstrap
+//
+// TODO Only include what we're actually using. Now we're just loading
+// everything, but to conserve space we should just include the mandatory
+// elements and nothing else.
+//
+// The below structure is from ~bootstrap/scss/bootstrap, wich is licensed under MIT. Which makes ONLY
+// THIS FILE MIT licensed.
+//
+
+// Load functions, variables and mixins. These should always be loaded.
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+// Register CSS variables
+@import "~bootstrap/scss/root";
+
+// Reboot and print
+@import "~bootstrap/scss/print";
+@import "~bootstrap/scss/reboot";
+
+// main typography and common elements.
+@import "~bootstrap/scss/type";
+@import "~bootstrap/scss/images";
+@import "~bootstrap/scss/code";
+@import "~bootstrap/scss/grid";
+@import "~bootstrap/scss/tables";
+
+// Forms and buttons
+@import "~bootstrap/scss/forms";
+@import "~bootstrap/scss/buttons";
+
+// Load transitions
+@import "~bootstrap/scss/transitions";
+
+// Load the dropdown element
+@import "~bootstrap/scss/dropdown";
+
+// Load element groups
+@import "~bootstrap/scss/button-group";
+@import "~bootstrap/scss/input-group";
+@import "~bootstrap/scss/custom-forms";
+
+// Navigation (and card)
+@import "~bootstrap/scss/nav";
+@import "~bootstrap/scss/navbar";
+@import "~bootstrap/scss/card";
+@import "~bootstrap/scss/breadcrumb";
+@import "~bootstrap/scss/pagination";
+
+// Load the badge element
+@import "~bootstrap/scss/badge";
+
+// Load the Jumbotron
+@import "~bootstrap/scss/jumbotron";
+
+// Load alert and progress
+@import "~bootstrap/scss/alert";
+@import "~bootstrap/scss/progress";
+
+// Media elements and list groups
+@import "~bootstrap/scss/media";
+@import "~bootstrap/scss/list-group";
+
+// Small close emblem (required)
+@import "~bootstrap/scss/close";
+
+// Full screen modal
+@import "~bootstrap/scss/modal";
+
+// Tooltip and popover, requires popper.js
+@import "~bootstrap/scss/tooltip";
+@import "~bootstrap/scss/popover";
+
+// Carousel
+@import "~bootstrap/scss/carousel";
+
+// And lastly, some utilities
+@import "~bootstrap/scss/utilities";
