@@ -37,30 +37,30 @@ return [
     /* --------------------------------------------------------------- */
     // Enable custom background (since WP 3.4)
     /* --------------------------------------------------------------- */
-    //'custom-background'	=> [
-    //	'default-color'          => '',
-    //	'default-image'          => '',
-    //	'wp-head-callback'       => '_custom_background_cb',
-    //	'admin-head-callback'    => '',
-    //	'admin-preview-callback' => ''
+    //'custom-background'    => [
+    //    'default-color'          => '',
+    //    'default-image'          => '',
+    //    'wp-head-callback'       => '_custom_background_cb',
+    //    'admin-head-callback'    => '',
+    //    'admin-preview-callback' => ''
     //],
 
     /* --------------------------------------------------------------- */
     // Enable custom header (not compatible for versions < WP 3.4)
     /* --------------------------------------------------------------- */
-    //'custom-header'	=>	[
-    //	'default-image'          => '',
-    //	'random-default'         => false,
-    //	'width'                  => 0,
-    //	'height'                 => 0,
-    //	'flex-height'            => false,
-    //	'flex-width'             => false,
-    //	'default-text-color'     => '',
-    //	'header-text'            => true,
-    //	'uploads'                => true,
-    //	'wp-head-callback'       => '',
-    //	'admin-head-callback'    => '',
-    //	'admin-preview-callback' => '',
+    //'custom-header'    =>    [
+    //    'default-image'          => '',
+    //    'random-default'         => false,
+    //    'width'                  => 0,
+    //    'height'                 => 0,
+    //    'flex-height'            => false,
+    //    'flex-width'             => false,
+    //    'default-text-color'     => '',
+    //    'header-text'            => true,
+    //    'uploads'                => true,
+    //    'wp-head-callback'       => '',
+    //    'admin-head-callback'    => '',
+    //    'admin-preview-callback' => '',
     //]
 
 ];
