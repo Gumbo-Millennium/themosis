@@ -5,13 +5,23 @@
 extends: "stylelint-config-standard"
 
 plugins:
-  "stylelint-scss"
+  - "stylelint-scss"
+  - "stylelint-declaration-strict-value"
 
 rules:
+  # NEVER write vendor prefixes, Autoprefixer will take care of that
   value-no-vendor-prefix: true
+
+  # The only URLs we want to see are data URLs and stuff over https.
   function-url-scheme-whitelist: ["data", "https"]
+
+  # Also, '//example.com' is not allowed
   function-url-no-scheme-relative: true
+
+  # And write hex in full, for consistency.
   color-hex-length: "long"
+
+  # Some fixes to make sass variables work, @media and @charset is excluded
   at-rule-no-unknown:
     - true
     - ignoreAtRules: &sass-rules
@@ -28,4 +38,11 @@ rules:
   at-rule-empty-line-before:
     - "always"
     - ignoreAtRules: *sass-rules
+
+  # Never write 0.2, just write .2
   number-leading-zero: "never"
+
+  # Force to use variables on a lot of colour elements
+  scale-unlimited/declaration-strict-value:
+    - /-color$/
+    - color
