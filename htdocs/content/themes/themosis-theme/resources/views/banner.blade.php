@@ -10,6 +10,8 @@
 ?>
 
 
-<div class="banner">
-    <img src="{{ $banners[$key] }}"/>
+<div class="support-banner">
+    <div class="support-banner__inner">
+        <img src="{{ $banners[$key] }}"/>
+    </div>
 </div>
