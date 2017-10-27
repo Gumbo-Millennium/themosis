@@ -5,9 +5,16 @@ php:
   - '7.1'
   - nightly
 
+cache:
+  directories:
+    - /home/travis/.composer
+    - vendor/
+    - htdocs/content/themes/themosis-theme/vendor
+    - node_modules/
+    - htdocs/content/themes/themosis-theme/node_modules
+
 before_script:
-  - composer self-update
-  - composer install
+  - composer install --no-suggest --no-progress
 
 script:
   - vendor/bin/phpunit
