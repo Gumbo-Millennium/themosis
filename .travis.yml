@@ -14,7 +14,7 @@ cache:
     - htdocs/content/themes/themosis-theme/node_modules
 
 before_script:
-  - composer install --no-suggest --no-progress
+  - bin/ci-install
 
 script:
-  - vendor/bin/phpunit
+  - bin/ci-test
