@@ -1,0 +1,190 @@
+= Gumbo Millennium - Site theme
+////
+This document is written in AsciiDoc. Now I hear you wonder why, so let's
+explain that:
+
+Most of this document can be directly transpiled to Markdown, with one notable
+exception: The warnings, alerts and information boxes. Especially the warning is
+a very useful component of AsciiDoc, and allows me to highlight important
+information, which is useful on projects of this scale.
+////
+
+This theme is the official theme for the Gumbo Millennium website, as soon
+available on https://www.gumbo-millennium.nl/.
+
+== Introduction
+
+The theme requires the https://framework.themosis.com/[Themosis framework] to
+function, since it uses many improvements introduced by the framework.
+
+NOTE: The theme will verbosely fail when Themosis is unavailable. This message
+is visible to both admins and end users.
+
+=== Dependencies
+
+Aside from the Themosis requirement, the following requirements are also in
+place, as divided by platform.
+
+* *PHP*
+** https://getcomposer.org/[Composer] for PHP dependency management
+* *Javascript and CSS assets*
+** https://github.com/twbs/bootstrap[Bootstrap]
+** https://popper.js.org[Popper JS]
+** https://jquery.com/[jQuery 3]
+* *Javascript and CSS compilers*
+** https://github.com/symfony/webpack-encore[Symfony Encore] (powered by http://webpack.js.org/[Webpack]) with plugins:
+*** https://babeljs.io/[Babel]
+*** https://eslint.org/[eslint]
+*** https://stylelint.io/[stylelint]
+** http://postcss.org/[PostCSS] with extensions:
+*** https://github.com/postcss/autoprefixer[Autoprefixer]
+
+The above dependencies mean you'll also need to install some stuff on your
+machine:
+
+* https://yarnpkg.com/[Yarn] (npm works, but yarn is recommended)
+* https://php.net/[PHP], version 7.0 or higher.
+* https://getcomposer.org/[Composer]
+* https://docker.com/[Docker] to run the website in a consistent environment.
+
+TIP: Although Yarn is recommended for managing the Javascript and Sass assets,
+npm is supported. If you insist on using npm over Yarn, substitute ``yarn`` with
+``npm`` in the command examples.
+
+== Development
+
+This section describes the architecture and workflow of the theme, which is
+useful for development.
+
+=== Architecture
+
+The development can be divided in a three distinct elements. The MVC model, the
+routing and the assets. These are all shortly explained below.
+
+==== MVC model
+
+The MVC model is used to control non-WordPress and WordPress elements with ease
+by using an improved method than the shitty version WordPress uses (breaking
+PHP whenver it feels like it).
+
+NOTE: TODO: Expand this section
+
+==== Routing
+
+The routing includes two elements:
+
+- Routing URLs to the correct controller
+- Adding Assets on the corresponding (or all) routes.
+
+NOTE: TODO: Expand this section
+
+==== Assets (javascript and css)
+
+The Javascript and CSS is managed by Webpack, which in turn is managed by
+Encore, which is an abstraction layer over Webpack. By using Encore we take out
+some maintenance work by letting the Symfony team work some stuff out.
+
+Still, the config is specified in ``webpack.config.js`` and is further
+post-processed by PostCSS (whose config is in ``postcss.config.js``).
+
+Encore handles the following tasks:
+
+- Transforming Sass to CSS and adding correct vendor prefixes for our target
+  browsers.
+- Compiling Javascript from ECMAScript 7 to ECMAScript 5, in compliance with
+  our target browsers. This is powered by Babel.
+- Copying and minifying images in the images directory.
+
+WARNING: Encore will *always* empty the ``dist/`` directory before compiling
+the assets. This means any changes made in this directory are discarded *without
+warning*. +
+Make sure you make your changes in the ``assets/`` directory, and leave ``dist/`` as-is.
+
+=== Workflow
+
+The workflow is fairly simple. It consists of three main elements:
+
+. Fire up the Docker containers (or start your server, but Docker is recommended).
+. Installing the dependencies
+. Running the asset compilers
+
+Let's quickly iterate through them.
+
+==== Firing up Docker containers
+
+There's a ``docker-compose.yml`` file in the repository root, which can be
+invoked from each directory. After you've installed Docker, run the following
+command:
+
+ docker-compose up -d
+
+This will download the containers, set up the network and volumes and then
+launch the containers. The ``-d`` flag is optional, but it'll give you back
+your console when the containers have launched, which'll save you another open
+window.
+
+TIP: The Docker compose file specifies volumes for the MySQL storage directory,
+meaning that directory will persist between installs. If you want to delete
+them, run ``docker-compose down --volumes``.
+
+==== Installing the dependencies
+
+You'll need to install the dependencies for both Composer (PHP) and
+Yarn (Javascript and Sass). Both dependency managers have a lockfile associated
+with them (``composer.lock`` and ``yarn.lock`` respectively), which means
+everyone will install a consistent version across machines.
+
+So, without further ado, the commands you need to run:
+
+ composer install
+ yarn install
+
+This will install both the production and development dependencies for Composer
+and Yarn. Don't forget to run this command after you've switched branch or
+rebased your code.
+
+==== Running the asset compilers
+
+As mentioned in the Workflow section, Encore takes care of compiling Javascript,
+Sass and minifying images. Since this may seem like a lot of work, you may
+think this requires a big command.
+
+Spoiler alert: It doesn't.
+
+To compile all assets for development (meaning they won't be minified and
+contain sourcemaps), just run:
+
+ yarn build
+
+This command will take a couple of seconds and produce a bunch of files:
+
+- ``dist/manifest.js``
+- ``dist/js/vendor.js``
+- ``dist/js/gumbo-millennium.js``
+- ``dist/css/gumbo-millennium.css``
+
+The first file is a manifest describing how to link assets such as jQuery,
+Popper and Bootstrap to the ``gumbo-millennium.js`` file, you'll probably won't
+be recompiling those a lot. The last Javascript file contains the code from
+``assets/js``, but transpiled to ECMAScript 5. If some browsers go goofy on
+certain statements, Babel will most likely have taken care of that, giving you
+even more ease-of-mind.
+
+The css file contains both Bootstrap and your code, since they may overwrite
+each-other and since you may have changed some variables.
+
+TIP: If you're working on the assets and want to see changes quickly without
+having to run ``yarn build`` all the time, run ``yarn build --watch`` instead. +
+This will make Encore watch the files in ``assets//`` and recompile them
+whenever a file was changed.
+
+The build command also runs linters, which may throw errors if your code does
+not meet the guidelines. It's highly recommended to use an IDE with linters for
+Stylelint and ESLint, as they'll save you a lot of time by quickly hinting you
+at problems as you're making them.
+
+When you push commits, the CI will run these checks too.
+
+== Deployment
+
+NOTE: TODO: Write this section
