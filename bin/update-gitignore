@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+
+# Go to root dir
+cd "$( realpath "$( dirname "${BASH_SOURCE[0]}" )/../" )"
+
+# Prepare color vars
+C_RES=''
+C_OK=''
+C_CONTENT=''
+C_COMMAND=''
+
+# Pick colors if supported
+if [ $( tput colors ) -ge 8 ]; then
+    C_RES="$( tput sgr0 )"
+    C_OK="$( tput setaf 2 )"
+    C_CONTENT="$( tput setaf 7 )"
+    C_COMMAND="$( tput setaf 6 )"
+fi
+
+
+# Create gitignore file
+echo -e "→ ${C_COMMAND}Create tempfile${C_RES}"
+FILE="$( tempfile )"
+touch $FILE
+
+# Download content for components
+echo -e "→ ${C_COMMAND}Download gitignore for components (1/2)${C_RES}"
+curl -o- https://www.gitignore.io/api/laravel,composer,phpstorm | tee --append "${FILE}" > /dev/null
+
+# Download content for operating systems
+echo -e "→ ${C_COMMAND}Download gitignore for operating systems (2/2)${C_RES}"
+curl -o- https://www.gitignore.io/api/windows,macos,linux | tee --append "${FILE}" > /dev/null
+
+# Append custom content
+echo -e "→ ${C_COMMAND}Append custom content${C_CONTENT}"
+tee --append "$FILE" > /dev/null <<GITIGNORE
+
+### Gumbo Millennium ###
+
+# Installed WordPress environment
+/htdocs/content/mu-plugins/themosis-framework/
+/htdocs/content/uploads/
+/htdocs/content/upgrade/
+GITIGNORE
+
+echo -e "→ ${C_COMMAND}Move temporary file${C_RES}"
+mv "$FILE" .gitignore
+
+echo -e "${C_OK}Gitignore updated.${C_RES}"
