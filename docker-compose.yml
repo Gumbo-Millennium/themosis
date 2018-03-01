@@ -30,7 +30,7 @@ services:
 
   # PHP 7.1 FPM
   php:
-    image: roelofr/php-fpm:latest
+    image: roelofr/php:fpm
     hostname: php.gumbo.example
     networks:
       - gumbo-site
