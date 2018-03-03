@@ -1,1 +1,4 @@
 * text=auto
+composer.lock -diff
+yarn.lock -diff
+
