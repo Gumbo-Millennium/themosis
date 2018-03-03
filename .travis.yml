@@ -14,7 +14,9 @@ cache:
     - htdocs/content/themes/themosis-theme/node_modules
 
 before_script:
-  - bin/ci-install
+  - cd "$TRAVIS_BUILD_DIR/" && composer install --no-suggest --no-progress -ao
+  - cd "$TRAVIS_BUILD_DIR/theme" && composer install --no-suggest --no-progress -ao
 
 script:
-  - bin/ci-test
+  - cd "$TRAVIS_BUILD_DIR" && vendor/bin/phpunit
+  - cd "$TRAVIS_BUILD_DIR/theme" && vendor/bin/phpcs --colors
